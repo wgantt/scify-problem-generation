@@ -77,5 +77,4 @@ def construct_modify_feasibility_prompts(problems_path: Path) -> List[Dict[str, 
         List[Dict[str, Any]]: A list of dictionaries, each containing a system prompt, user prompt, and metadata.
     """
     problems = load_gold_standard_problems(problems_path)
-    breakpoint()
     return [construct_modify_feasibility_prompt(problem) for problem in problems]
