@@ -1,0 +1,3 @@
+[submodule "scify-problems"]
+	path = scify-problems
+	url = git@github.com:darpa-scify-apl/scify-problems.git
