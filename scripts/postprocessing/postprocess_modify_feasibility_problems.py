@@ -9,6 +9,7 @@ from typing import Optional
 SEED = 14607
 random.seed(SEED)  # Set a seed for reproducibility
 
+
 def postprocess(
     input_file: Path,
     output_dir: Path,
@@ -39,7 +40,7 @@ def postprocess(
                 artifacts=[],  # no artifacts supported for now
                 likert_score=r["likert_score"],
                 explanation=r["explanation"],
-                evidence={}, # no evidence supported for now
+                evidence={},  # no evidence supported for now
                 author=author,
                 comments=[comment] if comment else [],
             )

@@ -31,10 +31,7 @@ def format_modify_feasibility_user_prompt(problem: Dict[str, Any]) -> str:
     Formats the user prompt for modifying feasibility.
 
     Args:
-        claim (str): The original scientific claim.
-        artifact (str): The context artifact related to the claim.
-        score (int): The feasibility score of the claim.
-        explanation (str): The explanation for the feasibility score.
+        problem (Dict[str, Any]): The original problem containing the claim, context, score, and explanation.
 
     Returns:
         str: Formatted user prompt.
@@ -62,6 +59,7 @@ def construct_modify_feasibility_prompt(problem: Dict[str, Any]) -> Dict[str, An
         Dict[str, Any]: A dictionary containing the system prompt, user prompt, and metadata.
     """
     return {
+        "instance_id": problem["problem_id"],
         "system_prompt": MODIFY_FEASIBILITY_SYSTEM_PROMPT_V1,
         "user_prompt": format_modify_feasibility_user_prompt(problem),
         "meta": {"problem": problem},
@@ -78,7 +76,6 @@ def construct_modify_feasibility_prompts(problems_path: Path) -> List[Dict[str, 
     Returns:
         List[Dict[str, Any]]: A list of dictionaries, each containing a system prompt, user prompt, and metadata.
     """
-    from probgen.utils import load_gold_standard_problems
-
     problems = load_gold_standard_problems(problems_path)
+    breakpoint()
     return [construct_modify_feasibility_prompt(problem) for problem in problems]
